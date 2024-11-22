@@ -43,9 +43,9 @@ public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> w
         return await query.ToListAsync();
     }
 
-    public async Task<TEntity?> GetByUUID(object uuid)
+    public async Task<TEntity?> GetById(object id)
     {
-        var entity = await dbSet.FindAsync(uuid);
+        var entity = await dbSet.FindAsync(id);
         return entity;
     }
 

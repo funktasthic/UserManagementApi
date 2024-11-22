@@ -5,7 +5,7 @@ namespace UserManagementApi.Models
     public class User
     {
         [Key]
-        public Guid UUID { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         [Required, MaxLength(15)]
         public string Name { get; set; } = null!;
         [Required, MaxLength(100)]
@@ -14,6 +14,6 @@ namespace UserManagementApi.Models
         public string Email { get; set; } = null!;
         [Required, MaxLength(30)]
         public string Password { get; set; } = null!;
-        public bool IsActive { get; set; } = false;
+        public bool IsActive { get; set; } = true;
     }
 }

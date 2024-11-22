@@ -12,7 +12,7 @@ namespace UserManagementApi.Repositories.Interfaces
             string includeProperties = "");
 
 
-        Task<TEntity?> GetByUUID(object uuid);
+        Task<TEntity?> GetById(object id);
 
 
         Task<TEntity> Insert(TEntity entity);

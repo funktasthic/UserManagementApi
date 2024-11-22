@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using UserManagementApi.Controllers;
 using UserManagementApi.DTOs.User;
 using UserManagementApi.Services.Interfaces;
 
@@ -20,10 +19,10 @@ public class UserController : BaseApiController
         return await _userService.GetAll();
     }
 
-    [HttpGet("{uuid}")]
-    public async Task<UserDto> GetByUUID(string uuid)
+    [HttpGet("{id}")]
+    public async Task<UserDto> GetById(Guid id)
     {
-        return await _userService.GetByUUID(uuid);
+        return await _userService.GetById(id);
     }
 
     [HttpPost]
@@ -32,17 +31,16 @@ public class UserController : BaseApiController
         return await _userService.Create(userCreateRequestDto);
     }
 
-
-    [HttpPut("{uuid}")]
-    public async Task<UserDto> Put(string uuid, [FromBody] UserUpdateRequestDto userUpdateRequestDto)
+    [HttpPatch("{id}")]
+    public async Task<UserDto> Put(Guid id, [FromBody] UserUpdateRequestDto userUpdateRequestDto)
     {
         return await _userService.EditUser(userUpdateRequestDto);
     }
 
-    [HttpDelete("{uuid}")]
-    public async Task<IActionResult> Delete(string uuid)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(Guid id)
     {
-        var response = await _userService.DeleteUser(uuid);
+        var response = await _userService.DeleteUser(id);
         return Ok(response);
     }
 }
