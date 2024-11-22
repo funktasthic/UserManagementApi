@@ -1,5 +1,6 @@
 using UserManagementApi.Data;
 using Microsoft.EntityFrameworkCore;
+using UserManagementApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Database
+AppSeedService.SeedDatabase(app);
 
 app.UseHttpsRedirection();
 
