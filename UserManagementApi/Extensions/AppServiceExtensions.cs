@@ -40,7 +40,7 @@ public static class AppServiceExtensions
     private static void AddSwaggerGen(IServiceCollection services)
     {
         services.AddSwaggerGen(c =>
-            c.SwaggerDoc("v1", new OpenApiInfo() { Title = "Cubitwelve API", Version = "v1" })
+            c.SwaggerDoc("v1", new OpenApiInfo() { Title = "UserManagement API", Version = "v1" })
         );
 
     }
