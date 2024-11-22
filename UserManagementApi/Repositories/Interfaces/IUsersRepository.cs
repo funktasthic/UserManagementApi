@@ -1,5 +1,4 @@
 ﻿using UserManagementApi.Models;
-using UserManagementApi.Repositories.Interfaces;
 
 namespace UserManagementApi.Repositories.Interfaces;
 
@@ -11,7 +10,7 @@ public interface IUsersRepository : IGenericRepository<User>
     /// </summary>
     /// <returns></returns>
     public Task<List<User>> GetAll();
-    
+
     /// <summary>
     /// Encuentra el primer usuario en la base de datos que tenga el estado IsActive = true según el  proporcionado.
     /// </summary>

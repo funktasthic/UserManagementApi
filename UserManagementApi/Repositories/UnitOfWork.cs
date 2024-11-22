@@ -1,42 +1,42 @@
 ﻿using UserManagementApi.Data;
 using UserManagementApi.Repositories.Interfaces;
 
-namespace auth_servicetarea4_arquitectura_de_sistemas.Services;
+namespace UserManagementApi.Services;
 
 public class UnitOfWork : IUnitOfWork
 {
-        private IUsersRepository _usersRepository = null!;
+    private IUsersRepository _usersRepository = null!;
 
-        public UnitOfWork(DataContext context)
-        {
-            _context = context;
-        }
+    public UnitOfWork(DataContext context)
+    {
+        _context = context;
+    }
 
-        private readonly DataContext _context;
-        private bool _disposed = false;
-        
-    
-        public IUsersRepository UsersRepository
-        {
-            get
-            {
-                _usersRepository ??= new UsersRepository(_context);
-                return _usersRepository;
-            }
-        }
-    
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing) _context.Dispose();
-            }
-            _disposed = true;
-        }
+    private readonly DataContext _context;
+    private bool _disposed = false;
 
-        public void Dispose()
+
+    public IUsersRepository UsersRepository
+    {
+        get
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _usersRepository ??= new UsersRepository(_context);
+            return _usersRepository;
         }
     }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposed)
+        {
+            if (disposing) _context.Dispose();
+        }
+        _disposed = true;
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+}

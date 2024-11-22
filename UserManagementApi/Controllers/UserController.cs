@@ -8,7 +8,7 @@ namespace UserManagementApi.Controllers;
 public class UserController : BaseApiController
 {
     private readonly IUserService _userService;
-    
+
     public UserController(IUserService userService)
     {
         _userService = userService;
@@ -42,7 +42,7 @@ public class UserController : BaseApiController
     [HttpDelete("{uuid}")]
     public async Task<IActionResult> Delete(string uuid)
     {
-        var response = _userService.DeleteUser(uuid);
+        var response = await _userService.DeleteUser(uuid);
         return Ok(response);
     }
 }
