@@ -1,10 +1,9 @@
-﻿using UserManagementApi.DTOs.Models;
-
+﻿
 namespace UserManagementApi.DTOs.Auth;
 
-public class LoginResponseDto : BaseModelDto
+public class LoginResponseDto
 {
     public string Email { get; set; }
-    public bool IsEnabled { get; set; }
+    public bool IsActive { get; set; }
     public string Token { get; set; }
 }

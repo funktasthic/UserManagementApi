@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using UserManagementApi.DTOs.Models;
-
 namespace UserManagementApi.DTOs.Auth
 {
-    public class LoginRequestDto : BaseModelDto
+    public class LoginRequestDto
     {
         [Required]
         [EmailAddress]
