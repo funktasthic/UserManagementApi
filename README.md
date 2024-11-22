@@ -51,7 +51,7 @@ The User Management API is a RESTful service designed to provide a robust platfo
 5. Run the application locally:
 
    ```bash
-   dotnet run --project UserManagementApi
+   dotnet run
    ```
 
 6. (Optional step) If you have problems running the project you just have to use
