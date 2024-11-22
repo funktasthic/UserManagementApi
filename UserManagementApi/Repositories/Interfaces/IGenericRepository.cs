@@ -3,9 +3,6 @@
 
 namespace UserManagementApi.Repositories.Interfaces
 {
-
-
-
     public interface IGenericRepository<TEntity> where TEntity : class
     {
 
@@ -15,7 +12,7 @@ namespace UserManagementApi.Repositories.Interfaces
             string includeProperties = "");
 
 
-        Task<TEntity?> GetByID(object id);
+        Task<TEntity?> GetByUUID(object uuid);
 
 
         Task<TEntity> Insert(TEntity entity);
