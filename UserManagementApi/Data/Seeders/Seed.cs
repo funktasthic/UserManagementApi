@@ -15,7 +15,7 @@ public class Seed
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         CallEachSeeder(context, options);
     }
-    
+
     /// <summary>
     /// Centralize the call to each seeder method
     /// </summary>
@@ -26,7 +26,7 @@ public class Seed
         SeedFirstOrderTables(context, options);
         SeedSecondOrderTables(context, options);
     }
-    
+
     /// <summary>
     /// Seed the database with the tables that don't depend on other tables.
     /// </summary>
@@ -35,7 +35,7 @@ public class Seed
     private static void SeedFirstOrderTables(DataContext context, JsonSerializerOptions options)
     {
     }
-    
+
     /// <summary>
     /// Seed the database with the tables that depend on first-order tables.
     /// </summary>
@@ -45,8 +45,8 @@ public class Seed
     {
         SeedUsers(context, options);
     }
-    
-    
+
+
     /// <summary>
     /// Seed the database with users from the JSON file.
     /// </summary>
@@ -57,11 +57,11 @@ public class Seed
         var result = context.Users?.Any();
         if (result is true or null) return;
 
-        var path = "Data/Seeders/DataSeeders/UsersData.json";
+        var path = "Data/Seeders/UsersData.json";
         var usersData = File.ReadAllText(path);
         var usersList = JsonSerializer.Deserialize<List<User>>(usersData, options) ??
                         throw new Exception("UsersData.json is empty");
-        
+
         // Hashear la contraseña de cada usuario antes de guardarlo
         foreach (var user in usersList)
         {
