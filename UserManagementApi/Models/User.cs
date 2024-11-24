@@ -5,7 +5,8 @@ namespace UserManagementApi.Models
     public class User
     {
         [Key]
-        public string Id { get; set; } = null!;
+        public string Id { get; set; }
+        
         [Required, MaxLength(15)]
         public string Name { get; set; } = null!;
         [Required, MaxLength(100)]

@@ -65,6 +65,10 @@ public class Seed
         // Hashear la contraseña de cada usuario antes de guardarlo
         foreach (var user in usersList)
         {
+            if (string.IsNullOrWhiteSpace(user.Id))
+            {
+                user.Id = Guid.NewGuid().ToString();
+            }
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
         }
 
