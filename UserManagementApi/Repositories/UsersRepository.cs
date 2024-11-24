@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using UserManagementApi.Data;
+using UserManagementApi.Exceptions;
 using UserManagementApi.Models;
 using UserManagementApi.Repositories.Interfaces;
 
@@ -18,9 +19,19 @@ public class UsersRepository : GenericRepository<User>, IUsersRepository
             .Where(softDeleteFilter)
             .FirstOrDefaultAsync(x => x.Email == email);
     }
-    public Task<User?> CreateUser(User user)
+    public async Task<User?> CreateUser(User user)
     {
-        throw new NotImplementedException();
+        var existingUser = await dbSet.FirstOrDefaultAsync(u => u.Email == user.Email && u.IsActive == true);
+
+        if (existingUser != null)
+        {
+            throw new DuplicateUserException("Email already in use");
+        }
+
+        dbSet.Add(user);
+        await context.SaveChangesAsync();
+
+        return user;
     }
 
     public async Task<bool> DeleteUser(string id)

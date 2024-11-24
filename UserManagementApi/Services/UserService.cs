@@ -36,7 +36,7 @@ public class UserService : IUserService
 
         if (!result)
         {
-            throw new InternalErrorException();
+            throw new Exception();
         }
 
         return true;
@@ -49,28 +49,21 @@ public class UserService : IUserService
 
     public async Task<BaseResponse<List<UserDto>>> GetAllUsersPaged(int page, int pageSize)
     {
-        try
+        if (page <= 0 || pageSize <= 0)
         {
-            if (page <= 0 || pageSize <= 0)
-            {
-                throw new BadRequestException("Page and pageSize must be greater than 0");
-            }
-
-            var users = await _repository.GetAllUsers(page, pageSize);
-
-            if (users == null || users.Count() == 0)
-            {
-                throw new NotFoundException("No users found");
-            }
-
-            var userDtos = _mapper.Map<List<UserDto>>(users);
-
-            return new BaseResponse<List<UserDto>>("Users retrieved successfully", userDtos);
+            throw new BadRequestException("Page and Page Size must be greater than 0");
         }
-        catch (Exception ex)
+
+        var users = await _repository.GetAllUsers(page, pageSize);
+
+        if (users == null || !users.Any())
         {
-            throw new InternalErrorException(ex.Message, ex);
+            throw new NotFoundException("No users found");
         }
+
+        var userDtos = _mapper.Map<List<UserDto>>(users);
+
+        return new BaseResponse<List<UserDto>>("Users retrieved successfully", userDtos);
     }
 
     public async Task<BaseResponse<UserDto>> GetUserById(string id)

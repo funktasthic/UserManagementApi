@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UserManagementApi.DTOs.User;
 using UserManagementApi.Errors;
+using UserManagementApi.Exceptions;
 using UserManagementApi.Models.Common;
 using UserManagementApi.Services.Interfaces;
 
@@ -50,22 +51,20 @@ public class UserController : BaseApiController
     }
 
     [HttpPatch("delete/{id}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> DeleteUser(string id)
     {
         try
         {
             var result = await _userService.DeleteUser(id);
-
-            if (!result)
-            {
-                return NotFound(new CodeErrorGlobalResponse(404, "User not found"));
-            }
-
             return NoContent();
+        }
+        catch (NotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new CodeErrorGlobalResponse(500, "An unexpected error occurred"));
+            return StatusCode(500, new { message = "An error occurred", details = ex.Message });
         }
     }
 }
