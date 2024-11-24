@@ -2,6 +2,7 @@
 using UserManagementApi.DTOs.User;
 using UserManagementApi.Exceptions;
 using UserManagementApi.Helpers;
+using UserManagementApi.Models;
 using UserManagementApi.Models.Common;
 using UserManagementApi.Repositories.Interfaces;
 using UserManagementApi.Services.Interfaces;
@@ -19,9 +20,42 @@ public class UserService : IUserService
         _mapper = mapper;
     }
 
-    public Task<BaseResponse<UserDto>> CreateUser(UserCreateRequestDto userCreateRequestDto)
+    public async Task<BaseResponse<UserDto>> CreateUser(UserCreateRequestDto userCreateRequestDto)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(userCreateRequestDto.Name) ||
+            string.IsNullOrWhiteSpace(userCreateRequestDto.LastName) ||
+            string.IsNullOrWhiteSpace(userCreateRequestDto.Email) ||
+            string.IsNullOrWhiteSpace(userCreateRequestDto.Password))
+        {
+            throw new BadRequestException("Invalid user data provided.");
+        }
+
+        var existingUser = await _repository.GetByEmail(userCreateRequestDto.Email);
+        if (existingUser != null)
+        {
+            throw new DuplicateUserException("Email is already in use");
+        }
+
+        var user = new User
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = userCreateRequestDto.Name,
+            LastName = userCreateRequestDto.LastName,
+            Email = userCreateRequestDto.Email,
+            Password = PasswordHelper.EncryptPassword(userCreateRequestDto.Password),
+            IsActive = true
+        };
+
+        var createdUser = await _repository.CreateUser(user);
+
+        if (createdUser == null)
+        {
+            throw new Exception("Failed to create user");
+        }
+
+        var userDto = _mapper.Map<UserDto>(createdUser);
+
+        return new BaseResponse<UserDto>("User created successfully", userDto);
     }
 
     public async Task<bool> DeleteUser(string id)

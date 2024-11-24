@@ -49,13 +49,25 @@ public class UserController : BaseApiController
         {
             return StatusCode(500, new { message = ex.Message });
         }
-
     }
 
     [HttpPost("create")]
-    public async Task<BaseResponse<UserDto>> Post([FromBody] UserCreateRequestDto userCreateRequestDto)
+    public async Task<IActionResult> Post([FromBody] UserCreateRequestDto userCreateRequestDto)
     {
-        return await _userService.CreateUser(userCreateRequestDto);
+        try
+        {
+            var response = await _userService.CreateUser(userCreateRequestDto);
+
+            return CreatedAtAction(nameof(GetUser), new { id = response.Data.Id }, response);
+        }
+        catch (BadRequestException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = ex.Message });
+        }
     }
 
     [HttpPatch("edit/{id}")]

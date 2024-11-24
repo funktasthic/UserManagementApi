@@ -19,9 +19,21 @@ public class UsersRepository : GenericRepository<User>, IUsersRepository
             .Where(softDeleteFilter)
             .FirstOrDefaultAsync(x => x.Email == email);
     }
-    public Task<User?> CreateUser(User user)
+    public async Task<User?> CreateUser(User user)
     {
-        throw new NotImplementedException();
+        var existingUser = await dbSet
+            .Where(softDeleteFilter)
+            .FirstOrDefaultAsync(x => x.Email == user.Email);
+
+        if (existingUser != null)
+        {
+            throw new DuplicateUserException("Email is already in use");
+        }
+
+        await dbSet.AddAsync(user);
+        await context.SaveChangesAsync();
+
+        return user;
     }
 
     public async Task<bool> DeleteUser(string id)
