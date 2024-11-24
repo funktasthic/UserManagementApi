@@ -5,7 +5,7 @@ namespace UserManagementApi.Models
     public class User
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public string Id { get; set; } = null!;
         [Required, MaxLength(15)]
         public string Name { get; set; } = null!;
         [Required, MaxLength(100)]
