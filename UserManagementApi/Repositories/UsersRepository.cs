@@ -33,9 +33,9 @@ public class UsersRepository : GenericRepository<User>, IUsersRepository
         throw new NotImplementedException();
     }
 
-    public Task<User?> GetUserById(string id)
+    public async Task<User?> GetUserById(string id)
     {
-        throw new NotImplementedException();
+        return await dbSet.Where(softDeleteFilter).FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public Task<User?> UpdateUser(string id, User user)

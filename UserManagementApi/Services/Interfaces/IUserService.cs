@@ -1,4 +1,5 @@
 ﻿using UserManagementApi.DTOs.User;
+using UserManagementApi.Models.Common;
 
 namespace UserManagementApi.Services.Interfaces;
 
@@ -6,7 +7,7 @@ public interface IUserService
 {
     public Task<List<UserDto>> GetAll();
 
-    public Task<UserDto> GetById(string id);
+    public Task<BaseResponse<UserDto>> GetUserById(string id);
 
     public Task<UserDto> Create(UserCreateRequestDto userCreateRequestDto);
 

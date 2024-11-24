@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UserManagementApi.DTOs.User;
+using UserManagementApi.Exceptions;
+using UserManagementApi.Models.Common;
 using UserManagementApi.Services.Interfaces;
 
 namespace UserManagementApi.Controllers;
@@ -20,9 +22,25 @@ public class UserController : BaseApiController
     }
 
     [HttpGet("{id}")]
-    public async Task<UserDto> GetById(string id)
+    public async Task<IActionResult> GetUser(string id)
     {
-        return await _userService.GetById(id);
+        try
+        {
+            var result = await _userService.GetUserById(id);
+            return Ok(result);
+        }
+        catch (NotFoundException ex)
+        {
+            return NotFound(new MessageResponse<string>("User not found") { Status = "error" });
+        }
+        catch (DisabledUserException ex)
+        {
+            return BadRequest(new MessageResponse<string>("User is disabled") { Status = "error" });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new MessageResponse<string>("An unexpected error occurred") { Status = "error" });
+        }
     }
 
     [HttpPost]

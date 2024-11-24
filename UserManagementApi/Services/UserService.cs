@@ -1,5 +1,6 @@
 ﻿using UserManagementApi.DTOs.User;
-using UserManagementApi.Models;
+using UserManagementApi.Exceptions;
+using UserManagementApi.Models.Common;
 using UserManagementApi.Repositories.Interfaces;
 using UserManagementApi.Services.Interfaces;
 
@@ -34,8 +35,25 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
-    public Task<UserDto> GetById(string id)
+    public async Task<BaseResponse<UserDto>> GetUserById(string id)
     {
-        throw new NotImplementedException();
+        var user = await _repository.GetById(id);
+        if (user == null)
+        {
+            throw new EntityNotFoundException("User not found");
+        }
+
+        if (!user.IsActive)
+        {
+            throw new DisabledUserException($"User is disabled");
+        }
+
+        return new BaseResponse<UserDto>("User found successfully", new UserDto
+        {
+            Id = user.Id,
+            Name = user.Name,
+            LastName = user.LastName,
+            Email = user.Email
+        });
     }
 }

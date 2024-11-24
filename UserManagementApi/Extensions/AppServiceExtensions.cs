@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using UserManagementApi.Exceptions;
 using UserManagementApi.Repositories.Interfaces;
 using UserManagementApi.Services.Interfaces;
+using UserManagementApi.Repositories;
 
 namespace UserManagementApi.Extensions;
 
@@ -33,6 +34,8 @@ public static class AppServiceExtensions
     {
         services.AddScoped<IMapperService, MapperService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IUsersRepository, UsersRepository>();
     }
 
 
