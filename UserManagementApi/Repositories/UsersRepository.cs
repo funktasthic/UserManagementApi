@@ -12,6 +12,12 @@ public class UsersRepository : GenericRepository<User>, IUsersRepository
 
     public UsersRepository(DataContext context) : base(context) { }
 
+    public async Task<User?> GetByEmail(string email)
+    {
+        return await dbSet
+            .Where(softDeleteFilter)
+            .FirstOrDefaultAsync(x => x.Email == email);
+    }
     public Task<User?> CreateUser(User user)
     {
         throw new NotImplementedException();
@@ -25,13 +31,6 @@ public class UsersRepository : GenericRepository<User>, IUsersRepository
     public Task<IEnumerable<User>> GetAllUsers(int page, int pageSize)
     {
         throw new NotImplementedException();
-    }
-
-    public async Task<User?> GetByEmail(string email)
-    {
-        return await dbSet
-            .Where(softDeleteFilter)
-            .FirstOrDefaultAsync(x => x.Email == email);
     }
 
     public Task<User?> GetUserById(string id)
