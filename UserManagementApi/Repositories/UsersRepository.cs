@@ -28,9 +28,9 @@ public class UsersRepository : GenericRepository<User>, IUsersRepository
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<User>> GetAllUsers(int page, int pageSize)
+    public async Task<IEnumerable<User>> GetAllUsers(int page, int pageSize)
     {
-        throw new NotImplementedException();
+        return await dbSet.Where(softDeleteFilter).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
     }
 
     public async Task<User?> GetUserById(string id)

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using UserManagementApi.DTOs.User;
-using UserManagementApi.Exceptions;
 using UserManagementApi.Models.Common;
 using UserManagementApi.Services.Interfaces;
 
@@ -16,9 +15,17 @@ public class UserController : BaseApiController
     }
 
     [HttpGet]
-    public async Task<IEnumerable<UserDto>> GetAllUsers()
+    public async Task<IActionResult> GetUsers([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        return await _userService.GetAll();
+        try
+        {
+            var response = await _userService.GetAllUsersPaged(page, pageSize);
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = ex.Message });
+        }
     }
 
     [HttpGet("{id}")]
@@ -28,10 +35,11 @@ public class UserController : BaseApiController
         return Ok(result);
     }
 
-    [HttpPost]
-    public async Task<UserDto> Post([FromBody] UserCreateRequestDto userCreateRequestDto)
+
+    [HttpPost("create")]
+    public async Task<BaseResponse<UserDto>> Post([FromBody] UserCreateRequestDto userCreateRequestDto)
     {
-        return await _userService.Create(userCreateRequestDto);
+        return await _userService.CreateUser(userCreateRequestDto);
     }
 
     [HttpPatch("{id}")]
@@ -40,7 +48,7 @@ public class UserController : BaseApiController
         return await _userService.EditUser(userUpdateRequestDto);
     }
 
-    // CAMBIAR A PATCH PORQUE ES UN SOFTDELETE
+    // CAMBIAR A PATCH PORQUE ES UN
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
