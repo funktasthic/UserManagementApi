@@ -1,22 +1,25 @@
-﻿
-using UserManagementApi.DTOs.User;
+﻿using UserManagementApi.DTOs.User;
+using UserManagementApi.Models;
+using UserManagementApi.Repositories.Interfaces;
 using UserManagementApi.Services.Interfaces;
 
 namespace UserManagementApi.Services;
 
 public class UserService : IUserService
 {
-    public Task<List<UserDto>> GetAll()
-    {
-        throw new NotImplementedException();
-    }
+    private readonly IUsersRepository _repository;
 
-    public Task<UserDto> GetByUUID(string uuid)
+    public UserService(IUsersRepository repository)
     {
-        throw new NotImplementedException();
+        _repository = repository;
     }
 
     public Task<UserDto> Create(UserCreateRequestDto userCreateRequestDto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> DeleteUser(Guid uuid)
     {
         throw new NotImplementedException();
     }
@@ -26,7 +29,12 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
-    public Task<bool> DeleteUser(string uuid)
+    public Task<List<UserDto>> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<UserDto> GetById(Guid uuid)
     {
         throw new NotImplementedException();
     }

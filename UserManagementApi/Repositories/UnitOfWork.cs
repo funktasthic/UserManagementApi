@@ -1,4 +1,5 @@
 ﻿using UserManagementApi.Data;
+using UserManagementApi.Repositories;
 using UserManagementApi.Repositories.Interfaces;
 
 namespace UserManagementApi.Services;
