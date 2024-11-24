@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using UserManagementApi.DTOs.User;
 using UserManagementApi.Exceptions;
+using UserManagementApi.Helpers;
 using UserManagementApi.Models.Common;
 using UserManagementApi.Repositories.Interfaces;
 using UserManagementApi.Services.Interfaces;
@@ -29,7 +30,7 @@ public class UserService : IUserService
 
         if (user == null)
         {
-            throw new NotFoundException($"User with ID '{id}'");
+            throw new NotFoundException("User not found");
         }
 
         var result = await _repository.DeleteUser(id);
@@ -42,9 +43,36 @@ public class UserService : IUserService
         return true;
     }
 
-    public Task<UserDto> EditUser(UserUpdateRequestDto userUpdateRequestDto)
+    public async Task<UserDto> EditUser(string id, UserUpdateRequestDto userUpdateRequestDto)
     {
-        throw new NotImplementedException();
+        var user = await _repository.GetById(id);
+
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+
+        if (string.IsNullOrWhiteSpace(userUpdateRequestDto.Name) ||
+            string.IsNullOrWhiteSpace(userUpdateRequestDto.LastName) ||
+            string.IsNullOrWhiteSpace(userUpdateRequestDto.Email) ||
+            string.IsNullOrWhiteSpace(userUpdateRequestDto.Password))
+        {
+            throw new BadRequestException("Invalid user data provided.");
+        }
+
+        user.Name = userUpdateRequestDto.Name;
+        user.LastName = userUpdateRequestDto.LastName;
+        user.Email = userUpdateRequestDto.Email;
+        user.Password = PasswordHelper.EncryptPassword(userUpdateRequestDto.Password);
+
+        var result = await _repository.UpdateUser(id, user);
+
+        if (result == null)
+        {
+            throw new Exception("Failed to update user");
+        }
+
+        return _mapper.Map<UserDto>(user);
     }
 
     public async Task<BaseResponse<List<UserDto>>> GetAllUsersPaged(int page, int pageSize)
@@ -71,12 +99,12 @@ public class UserService : IUserService
         var user = await _repository.GetById(id);
         if (user == null)
         {
-            throw new NotFoundException($"User with ID '{id}'");
+            throw new NotFoundException("User not found");
         }
 
         if (!user.IsActive)
         {
-            throw new DisabledUserException($"User with ID '{id}' is disabled");
+            throw new DisabledUserException("User is disabled");
         }
 
         return new BaseResponse<UserDto>("User found successfully", new UserDto

@@ -11,7 +11,7 @@ public interface IUserService
 
     public Task<BaseResponse<UserDto>> CreateUser(UserCreateRequestDto userCreateRequestDto);
 
-    public Task<UserDto> EditUser(UserUpdateRequestDto userUpdateRequestDto);
+    public Task<UserDto> EditUser(string id, UserUpdateRequestDto userUpdateRequestDto);
 
     public Task<bool> DeleteUser(string id);
 
