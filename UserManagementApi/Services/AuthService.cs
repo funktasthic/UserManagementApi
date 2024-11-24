@@ -79,7 +79,7 @@ public class AuthService : IAuthService
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(2),
+                expires: DateTime.Now.AddMonths(2),
                 signingCredentials: creds
             );
 
