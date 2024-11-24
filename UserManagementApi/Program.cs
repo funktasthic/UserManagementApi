@@ -1,6 +1,7 @@
 using UserManagementApi.Data;
 using Microsoft.EntityFrameworkCore;
 using UserManagementApi.Extensions;
+using UserManagementApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,9 @@ if (app.Environment.IsDevelopment())
 
 // Database
 AppSeedService.SeedDatabase(app);
+
+// Middleware
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

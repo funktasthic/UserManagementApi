@@ -24,23 +24,8 @@ public class UserController : BaseApiController
     [HttpGet("{id}")]
     public async Task<IActionResult> GetUser(string id)
     {
-        try
-        {
-            var result = await _userService.GetUserById(id);
-            return Ok(result);
-        }
-        catch (NotFoundException ex)
-        {
-            return NotFound(new MessageResponse<string>("User not found") { Status = "error" });
-        }
-        catch (DisabledUserException ex)
-        {
-            return BadRequest(new MessageResponse<string>("User is disabled") { Status = "error" });
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, new MessageResponse<string>("An unexpected error occurred") { Status = "error" });
-        }
+        var result = await _userService.GetUserById(id);
+        return Ok(result);
     }
 
     [HttpPost]
@@ -55,10 +40,11 @@ public class UserController : BaseApiController
         return await _userService.EditUser(userUpdateRequestDto);
     }
 
+    // CAMBIAR A PATCH PORQUE ES UN SOFTDELETE
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var response = await _userService.DeleteUser(id);
-        return Ok(response);
+        await _userService.DeleteUser(id);
+        return NoContent();
     }
 }

@@ -20,9 +20,23 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
-    public Task<bool> DeleteUser(string id)
+    public async Task<bool> DeleteUser(string id)
     {
-        throw new NotImplementedException();
+        var user = await _repository.GetById(id);
+
+        if (user == null)
+        {
+            throw new NotFoundException($"User with ID '{id}' not found");
+        }
+
+        // TODO: Add exception
+        if (!user.IsActive)
+        {
+            throw new DisabledUserException($"User with ID '{id}' is disabled");
+        }
+
+        await _repository.DeleteUser(id);
+        return true;
     }
 
     public Task<UserDto> EditUser(UserUpdateRequestDto userUpdateRequestDto)
@@ -40,12 +54,12 @@ public class UserService : IUserService
         var user = await _repository.GetById(id);
         if (user == null)
         {
-            throw new EntityNotFoundException("User not found");
+            throw new NotFoundException($"User with ID '{id}'");
         }
 
         if (!user.IsActive)
         {
-            throw new DisabledUserException($"User is disabled");
+            throw new DisabledUserException($"User with ID '{id}' is disabled");
         }
 
         return new BaseResponse<UserDto>("User found successfully", new UserDto
@@ -53,7 +67,8 @@ public class UserService : IUserService
             Id = user.Id,
             Name = user.Name,
             LastName = user.LastName,
-            Email = user.Email
+            Email = user.Email,
+            IsActive = user.IsActive
         });
     }
 }
