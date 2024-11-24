@@ -19,7 +19,7 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
-    public Task<bool> DeleteUser(Guid uuid)
+    public Task<bool> DeleteUser(string id)
     {
         throw new NotImplementedException();
     }
@@ -34,7 +34,7 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
-    public Task<UserDto> GetById(Guid uuid)
+    public Task<UserDto> GetById(string id)
     {
         throw new NotImplementedException();
     }

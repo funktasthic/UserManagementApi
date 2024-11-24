@@ -20,7 +20,7 @@ public class UserController : BaseApiController
     }
 
     [HttpGet("{id}")]
-    public async Task<UserDto> GetById(Guid id)
+    public async Task<UserDto> GetById(string id)
     {
         return await _userService.GetById(id);
     }
@@ -32,13 +32,13 @@ public class UserController : BaseApiController
     }
 
     [HttpPatch("{id}")]
-    public async Task<UserDto> Put(Guid id, [FromBody] UserUpdateRequestDto userUpdateRequestDto)
+    public async Task<UserDto> Patch(string id, [FromBody] UserUpdateRequestDto userUpdateRequestDto)
     {
         return await _userService.EditUser(userUpdateRequestDto);
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(Guid id)
+    public async Task<IActionResult> Delete(string id)
     {
         var response = await _userService.DeleteUser(id);
         return Ok(response);
