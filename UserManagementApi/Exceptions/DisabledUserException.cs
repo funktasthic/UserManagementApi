@@ -1,6 +1,6 @@
 ﻿namespace UserManagementApi.Exceptions;
 
-public class DisabledUserException : Exception
+public class DisabledUserException : ApplicationException
 {
     public DisabledUserException() { }
 
@@ -9,5 +9,5 @@ public class DisabledUserException : Exception
 
     public DisabledUserException(string? message, Exception? innerException)
         : base(message, innerException) { }
-    
+
 }
