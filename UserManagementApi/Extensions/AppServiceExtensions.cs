@@ -20,7 +20,7 @@ public static class AppServiceExtensions
         AddServices(services);
         AddSwaggerGen(services);
         AddUnitOfWork(services);
-        // AddAuthentication(services, config);
+        AddAuthentication(services, config);
         AddHttpContextAccesor(services);
     }
 

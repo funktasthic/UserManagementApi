@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserManagementApi.DTOs.User;
 using UserManagementApi.Exceptions;
@@ -15,6 +16,7 @@ public class UserController : BaseApiController
         _userService = userService;
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetUsers([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
@@ -33,6 +35,7 @@ public class UserController : BaseApiController
         }
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetUser(string id)
     {
@@ -51,6 +54,7 @@ public class UserController : BaseApiController
         }
     }
 
+    [Authorize]
     [HttpPost("create")]
     public async Task<IActionResult> Post([FromBody] UserCreateRequestDto userCreateRequestDto)
     {
@@ -70,6 +74,7 @@ public class UserController : BaseApiController
         }
     }
 
+    [Authorize]
     [HttpPatch("edit/{id}")]
     public async Task<IActionResult> Patch(string id, [FromBody] UserUpdateRequestDto userUpdateRequestDto)
     {
@@ -92,6 +97,7 @@ public class UserController : BaseApiController
         }
     }
 
+    [Authorize]
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteUser(string id)
     {
