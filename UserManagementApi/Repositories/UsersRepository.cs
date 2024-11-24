@@ -23,9 +23,19 @@ public class UsersRepository : GenericRepository<User>, IUsersRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> DeleteUser(string id)
+    public async Task<bool> DeleteUser(string id)
     {
-        throw new NotImplementedException();
+        var user = await dbSet.FirstOrDefaultAsync(x => x.Id == id && x.IsActive == true);
+
+        if (user == null)
+        {
+            return false;
+        }
+
+        user.IsActive = false;
+        await context.SaveChangesAsync();
+
+        return true;
     }
 
     public async Task<IEnumerable<User>> GetAllUsers(int page, int pageSize)

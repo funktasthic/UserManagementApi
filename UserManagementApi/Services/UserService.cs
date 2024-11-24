@@ -23,9 +23,23 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
-    public Task<bool> DeleteUser(string id)
+    public async Task<bool> DeleteUser(string id)
     {
-        throw new NotImplementedException();
+        var user = await _repository.GetById(id);
+
+        if (user == null)
+        {
+            throw new NotFoundException($"User with ID '{id}'");
+        }
+
+        var result = await _repository.DeleteUser(id);
+
+        if (!result)
+        {
+            throw new InternalErrorException();
+        }
+
+        return true;
     }
 
     public Task<UserDto> EditUser(UserUpdateRequestDto userUpdateRequestDto)
