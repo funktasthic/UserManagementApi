@@ -1,0 +1,14 @@
+﻿services:
+  usermanagementapi:
+      image: "kuajinaiss/user_management_api_deploy"
+      ports:
+        - "3000:8080"
+      env_file:
+        - .env
+      volumes:
+        - db-data:/App/users.db
+      working_dir: /App
+
+volumes:
+  db-data:
+    driver: local
