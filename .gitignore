@@ -6,6 +6,12 @@
 # dotenv files
 .env
 
+# vscode files
+.vscode
+
+# migration files
+Data/Migrations/*.cs
+
 # User-specific files
 *.rsuser
 *.suo

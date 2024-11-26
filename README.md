@@ -41,20 +41,28 @@ The User Management API is a RESTful service designed to provide a robust platfo
    dotnet restore
    ```
 
+
 4. Create and apply Entity Framework Core migrations to set up the database:
 
    ```bash
+   cd UserManagementApi
+   dotnet ef database drop
    dotnet ef migrations add UserMigration --output-dir Data/Migrations
    dotnet ef database update
    ```
 
-5. Run the application locally:
-
+5. copy .env.example .env and configure the JWT_SECRET (you can use the default JWT_SECRET but is not recomended)
    ```bash
-   dotnet run --project UserManagementApi
+    copy .env.example .env
    ```
 
-6. (Optional step) If you have problems running the project you just have to use
+6. Run the application locally:
+
+   ```bash
+   dotnet run
+   ```
+
+7. (Optional step) If you have problems running the project you just have to use
 
    ```bash
    dotnet help

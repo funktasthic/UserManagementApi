@@ -1,0 +1,423 @@
+﻿[
+  {
+    "Name": "Admin",
+    "LastName": "example",
+    "Email": "admin@example.com",
+    "Password": "admin",
+    "IsActive": true
+  },
+  {
+    "Name": "User",
+    "LastName": "Example",
+    "Email": "user@example.com",
+    "Password": "user",
+    "IsActive": true
+  },
+  {
+    "Name": "John",
+    "LastName": "Doe",
+    "Email": "john.doe@example.com",
+    "Password": "john123",
+    "IsActive": true
+  },
+  {
+    "Name": "Jane",
+    "LastName": "Doe",
+    "Email": "jane.doe@example.com",
+    "Password": "jane123",
+    "IsActive": true
+  },
+  {
+    "Name": "Alice",
+    "LastName": "Smith",
+    "Email": "alice.smith@example.com",
+    "Password": "alice123",
+    "IsActive": true
+  },
+  {
+    "Name": "Bob",
+    "LastName": "Smith",
+    "Email": "bob.smith@example.com",
+    "Password": "bob123",
+    "IsActive": true
+  },
+  {
+    "Name": "Charlie",
+    "LastName": "Brown",
+    "Email": "charlie.brown@example.com",
+    "Password": "charlie123",
+    "IsActive": true
+  },
+  {
+    "Name": "Daisy",
+    "LastName": "Johnson",
+    "Email": "daisy.johnson@example.com",
+    "Password": "daisy123",
+    "IsActive": true
+  },
+  {
+    "Name": "Eve",
+    "LastName": "Walker",
+    "Email": "eve.walker@example.com",
+    "Password": "eve123",
+    "IsActive": true
+  },
+  {
+    "Name": "Frank",
+    "LastName": "Moore",
+    "Email": "frank.moore@example.com",
+    "Password": "frank123",
+    "IsActive": true
+  },
+  {
+    "Name": "Grace",
+    "LastName": "Hill",
+    "Email": "grace.hill@example.com",
+    "Password": "grace123",
+    "IsActive": true
+  },
+  {
+    "Name": "Henry",
+    "LastName": "Adams",
+    "Email": "henry.adams@example.com",
+    "Password": "henry123",
+    "IsActive": true
+  },
+  {
+    "Name": "Ivy",
+    "LastName": "Baker",
+    "Email": "ivy.baker@example.com",
+    "Password": "ivy123",
+    "IsActive": true
+  },
+  {
+    "Name": "Jack",
+    "LastName": "Carter",
+    "Email": "jack.carter@example.com",
+    "Password": "jack123",
+    "IsActive": true
+  },
+  {
+    "Name": "Karen",
+    "LastName": "Davis",
+    "Email": "karen.davis@example.com",
+    "Password": "karen123",
+    "IsActive": true
+  },
+  {
+    "Name": "Leo",
+    "LastName": "Evans",
+    "Email": "leo.evans@example.com",
+    "Password": "leo123",
+    "IsActive": true
+  },
+  {
+    "Name": "Mia",
+    "LastName": "Fisher",
+    "Email": "mia.fisher@example.com",
+    "Password": "mia123",
+    "IsActive": true
+  },
+  {
+    "Name": "Noah",
+    "LastName": "Garcia",
+    "Email": "noah.garcia@example.com",
+    "Password": "noah123",
+    "IsActive": true
+  },
+  {
+    "Name": "Olivia",
+    "LastName": "Harris",
+    "Email": "olivia.harris@example.com",
+    "Password": "olivia123",
+    "IsActive": true
+  },
+  {
+    "Name": "Paul",
+    "LastName": "Jackson",
+    "Email": "paul.jackson@example.com",
+    "Password": "paul123",
+    "IsActive": true
+  },
+  {
+    "Name": "Quinn",
+    "LastName": "King",
+    "Email": "quinn.king@example.com",
+    "Password": "quinn123",
+    "IsActive": true
+  },
+  {
+    "Name": "Ruby",
+    "LastName": "Lee",
+    "Email": "ruby.lee@example.com",
+    "Password": "ruby123",
+    "IsActive": true
+  },
+  {
+    "Name": "Sam",
+    "LastName": "Martin",
+    "Email": "sam.martin@example.com",
+    "Password": "sam123",
+    "IsActive": true
+  },
+  {
+    "Name": "Tina",
+    "LastName": "Nelson",
+    "Email": "tina.nelson@example.com",
+    "Password": "tina123",
+    "IsActive": true
+  },
+  {
+    "Name": "Uma",
+    "LastName": "Owen",
+    "Email": "uma.owen@example.com",
+    "Password": "uma123",
+    "IsActive": true
+  },
+  {
+    "Name": "Victor",
+    "LastName": "Parker",
+    "Email": "victor.parker@example.com",
+    "Password": "victor123",
+    "IsActive": true
+  },
+  {
+    "Name": "Wendy",
+    "LastName": "Quinn",
+    "Email": "wendy.quinn@example.com",
+    "Password": "wendy123",
+    "IsActive": true
+  },
+  {
+    "Name": "Xander",
+    "LastName": "Reed",
+    "Email": "xander.reed@example.com",
+    "Password": "xander123",
+    "IsActive": true
+  },
+  {
+    "Name": "Yara",
+    "LastName": "Scott",
+    "Email": "yara.scott@example.com",
+    "Password": "yara123",
+    "IsActive": true
+  },
+  {
+    "Name": "Zane",
+    "LastName": "Taylor",
+    "Email": "zane.taylor@example.com",
+    "Password": "zane123",
+    "IsActive": true
+  },
+  {
+    "Name": "Amelia",
+    "LastName": "Underwood",
+    "Email": "amelia.underwood@example.com",
+    "Password": "amelia123",
+    "IsActive": true
+  },
+  {
+    "Name": "Ben",
+    "LastName": "Vargas",
+    "Email": "ben.vargas@example.com",
+    "Password": "ben123",
+    "IsActive": true
+  },
+  {
+    "Name": "Cindy",
+    "LastName": "White",
+    "Email": "cindy.white@example.com",
+    "Password": "cindy123",
+    "IsActive": true
+  },
+  {
+    "Name": "Daniel",
+    "LastName": "Young",
+    "Email": "daniel.young@example.com",
+    "Password": "daniel123",
+    "IsActive": true
+  },
+  {
+    "Name": "Ella",
+    "LastName": "Zimmer",
+    "Email": "ella.zimmer@example.com",
+    "Password": "ella123",
+    "IsActive": true
+  },
+  {
+    "Name": "Fiona",
+    "LastName": "Allen",
+    "Email": "fiona.allen@example.com",
+    "Password": "fiona123",
+    "IsActive": true
+  },
+  {
+    "Name": "George",
+    "LastName": "Bennett",
+    "Email": "george.bennett@example.com",
+    "Password": "george123",
+    "IsActive": true
+  },
+  {
+    "Name": "Hannah",
+    "LastName": "Clark",
+    "Email": "hannah.clark@example.com",
+    "Password": "hannah123",
+    "IsActive": true
+  },
+  {
+    "Name": "Ian",
+    "LastName": "Dunn",
+    "Email": "ian.dunn@example.com",
+    "Password": "ian123",
+    "IsActive": true
+  },
+  {
+    "Name": "Julia",
+    "LastName": "Edwards",
+    "Email": "julia.edwards@example.com",
+    "Password": "julia123",
+    "IsActive": true
+  },
+  {
+    "Name": "Kevin",
+    "LastName": "Foster",
+    "Email": "kevin.foster@example.com",
+    "Password": "kevin123",
+    "IsActive": true
+  },
+  {
+    "Name": "Laura",
+    "LastName": "Gonzalez",
+    "Email": "laura.gonzalez@example.com",
+    "Password": "laura123",
+    "IsActive": true
+  },
+  {
+    "Name": "Mark",
+    "LastName": "Hernandez",
+    "Email": "mark.hernandez@example.com",
+    "Password": "mark123",
+    "IsActive": true
+  },
+  {
+    "Name": "Nina",
+    "LastName": "Ibarra",
+    "Email": "nina.ibarra@example.com",
+    "Password": "nina123",
+    "IsActive": true
+  },
+  {
+    "Name": "Oscar",
+    "LastName": "Johnson",
+    "Email": "oscar.johnson@example.com",
+    "Password": "oscar123",
+    "IsActive": true
+  },
+  {
+    "Name": "Paula",
+    "LastName": "Knight",
+    "Email": "paula.knight@example.com",
+    "Password": "paula123",
+    "IsActive": true
+  },
+  {
+    "Name": "Quentin",
+    "LastName": "Lopez",
+    "Email": "quentin.lopez@example.com",
+    "Password": "quentin123",
+    "IsActive": true
+  },
+  {
+    "Name": "Rita",
+    "LastName": "Morris",
+    "Email": "rita.morris@example.com",
+    "Password": "rita123",
+    "IsActive": true
+  },
+  {
+    "Name": "Steve",
+    "LastName": "Nelson",
+    "Email": "steve.nelson@example.com",
+    "Password": "steve123",
+    "IsActive": true
+  },
+  {
+    "Name": "Tara",
+    "LastName": "Owens",
+    "Email": "tara.owens@example.com",
+    "Password": "tara123",
+    "IsActive": true
+  },
+  {
+    "Name": "Ulysses",
+    "LastName": "Perez",
+    "Email": "ulysses.perez@example.com",
+    "Password": "ulysses123",
+    "IsActive": true
+  },
+  {
+    "Name": "Vanessa",
+    "LastName": "Quinn",
+    "Email": "vanessa.quinn@example.com",
+    "Password": "vanessa123",
+    "IsActive": true
+  },
+  {
+    "Name": "Walter",
+    "LastName": "Reyes",
+    "Email": "walter.reyes@example.com",
+    "Password": "walter123",
+    "IsActive": true
+  },
+  {
+    "Name": "Xenia",
+    "LastName": "Santos",
+    "Email": "xenia.santos@example.com",
+    "Password": "xenia123",
+    "IsActive": false
+  },
+  {
+    "Name": "Yvonne",
+    "LastName": "Torres",
+    "Email": "yvonne.torres@example.com",
+    "Password": "yvonne123",
+    "IsActive": false
+  },
+  {
+    "Name": "Zach",
+    "LastName": "Underwood",
+    "Email": "zach.underwood@example.com",
+    "Password": "zach123",
+    "IsActive": false
+  },
+  {
+    "Name": "Alan",
+    "LastName": "Vega",
+    "Email": "alan.vega@example.com",
+    "Password": "alan123",
+    "IsActive": false
+  },
+  {
+    "Name": "Beth",
+    "LastName": "Waters",
+    "Email": "beth.waters@example.com",
+    "Password": "beth123",
+    "IsActive": false
+  },
+  {
+    "Name": "Carl",
+    "LastName": "Xavier",
+    "Email": "carl.xavier@example.com",
+    "Password": "carl123",
+    "IsActive": false
+  },
+  {
+    "Name": "Diana",
+    "LastName": "Young",
+    "Email": "diana.young@example.com",
+    "Password": "diana123",
+    "IsActive": false
+  }
+]
+
